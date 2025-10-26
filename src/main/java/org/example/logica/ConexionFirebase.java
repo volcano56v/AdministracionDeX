@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logica;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
@@ -32,13 +32,5 @@ public class ConexionFirebase {
 
     public static Firestore getDB() {
         return db;
-    }
-
-    public static void main(String[] args) {
-        try {
-            conectar();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
