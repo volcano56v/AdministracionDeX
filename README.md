@@ -22,8 +22,6 @@ que le sirva a alguien.
 ### ***Esto está escrito en Markdown***
 **Este texto está en negrita** \
 *Esto en cursiva* \
-``hola``\rsiva* \
-``hola``\
 
 
 
