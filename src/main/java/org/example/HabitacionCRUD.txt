@@ -1,4 +1,4 @@
-//REvisar bien más adelante, peude que tenga parte que sirvan, y tambien entenderlo
+//Revisar bien más adelante, peude que tenga parte que sirvan, y tambien entenderlo
 
 package org.example.logica;
 
