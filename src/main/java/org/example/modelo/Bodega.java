@@ -5,19 +5,21 @@ public class Bodega {
     private final int capacidadMAxima;
     private int capacidadActual;
 
-
     public Bodega(long codigo, int capacidadMAxima) {
         this.codigo = codigo;
         this.capacidadMAxima = capacidadMAxima;
         this.capacidadActual = 0;
     }
 
-    @Override
-    public String toString() {
-        return "Bodega{" +
-                "codigo=" + codigo +
-                ", capacidadMAxima=" + capacidadMAxima +
-                ", capacidadActual=" + capacidadActual +
-                '}';
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public int getCapacidadMAxima() {
+        return capacidadMAxima;
+    }
+
+    public int getCapacidadActual() {
+        return capacidadActual;
     }
 }

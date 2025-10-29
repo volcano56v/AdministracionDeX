@@ -13,13 +13,19 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "codigoBarra=" + codigoBarra +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                ", categoria='" + categoria + '\'' +
-                '}';
+    public long getCodigoBarra() {
+        return codigoBarra;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public String getCategoria() {
+        return categoria;
     }
 }

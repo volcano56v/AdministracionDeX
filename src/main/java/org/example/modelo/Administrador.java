@@ -1,3 +1,5 @@
+package org.example.modelo;
+
 public class Administrador {
     private String nombreUsuario;
     private String contraseña;

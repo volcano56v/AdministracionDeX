@@ -11,12 +11,15 @@ public class Estante {
         this.capacidadActual = 0;
     }
 
-    @Override
-    public String toString() {
-        return "Estante{" +
-                "codigo=" + codigo +
-                ", capacidadMaxima=" + capacidadMaxima +
-                ", capacidadActual=" + capacidadActual +
-                '}';
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public int getCapacidadMaxima() {
+        return capacidadMaxima;
+    }
+
+    public int getCapacidadActual() {
+        return capacidadActual;
     }
 }
