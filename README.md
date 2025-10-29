@@ -10,9 +10,18 @@
 ## 🚀 Progreso del Proyecto
 - [x] Configuración del entorno
 - [x] Conexión a base de datos Firebase
-- [ ] Interfaz gráfica básica
+- [x] Interfaz gráfica básica
 - [ ] CRUD completo de stock
 - [ ] Pruebas y optimización
+---
+# Caracteristicas del programa
+**Administrador:** *El administrador puede hacer CRUD Create Read Update & Delete*\
+*para Bodegas, Estantes, y Productos* \
+**Bodega:** *En la bodega se pueden almacenar productos* \
+**Cliente:** *El cliente tiene acceso a los Estantes y a los Productos* \
+**Estante:** *En el estante se puedena almacenar productos* \
+**Producto:** *En el producto es lo que se puede comprar*
+
 ---
 ⚠️️⚠️️Lo que está escrito a continuación es solo para saber cómo escribir⚠️️⚠️️ \
 Por cierto, hola, yo soy volcano56v, soy estudiante de Ingeniería Informática y tengo 20 \
@@ -21,7 +30,7 @@ dado que estoy con un compañero y, además, es un proyecto para una asignatura.
 que le sirva a alguien.
 ### ***Esto está escrito en Markdown***
 **Este texto está en negrita** \
-*Esto en cursiva* \
+*Esto en cursiva*
 
 
 
