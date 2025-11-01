@@ -1,0 +1,80 @@
+import org.example.logica.CRUDFireStore;
+import org.example.modelo.Producto;
+import java.util.*;
+
+Scanner sc = new Scanner(System.in);
+
+        System.out.print("📦 Nombre de la colección: ");
+        String coleccion = sc.nextLine();
+
+        CRUDFireStore<Producto> crud = new CRUDFireStore<>(coleccion, Producto.class);
+
+        int opcion;
+        do {
+            System.out.println("\n=== CRUD PRODUCTOS (Firebase) ===");
+            System.out.println("1. Crear producto");
+            System.out.println("2. Mostrar todos");
+            System.out.println("3. Actualizar producto");
+            System.out.println("4. Eliminar producto");
+            System.out.println("5. Buscar por código de barra");
+            System.out.println("0. Salir");
+            System.out.print("👉 Opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+                case 1 -> {
+                    System.out.print("Código de barra (vacío = generar ID): ");
+                    String codigo = sc.nextLine();
+                    System.out.print("Nombre: ");
+                    String nombre = sc.nextLine();
+                    System.out.print("Precio: ");
+                    int precio = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Categoría: ");
+                    String categoria = sc.nextLine();
+                    System.out.print("Cantidad: ");
+                    int cantidad = sc.nextInt();
+                    sc.nextLine();
+
+                    Producto p = new Producto(nombre, precio, categoria, cantidad);
+                    crud.crear(p, codigo);
+                }
+                case 2 -> {
+                    System.out.println("\n📋 Productos:");
+                    crud.leerTodos().forEach(System.out::println);
+                }
+                case 3 -> {
+                    System.out.print("Código de barra a actualizar: ");
+                    String codigo = sc.nextLine();
+                    System.out.print("Nuevo nombre: ");
+                    String nombre = sc.nextLine();
+                    System.out.print("Nuevo precio: ");
+                    int precio = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Nueva categoría: ");
+                    String categoria = sc.nextLine();
+                    System.out.print("Nueva cantidad: ");
+                    int cantidad = sc.nextInt();
+                    sc.nextLine();
+
+                    Producto actualizado = new Producto(nombre, precio, categoria, cantidad);
+                    crud.actualizar(codigo, actualizado);
+                }
+                case 4 -> {
+                    System.out.print("Código de barra a eliminar: ");
+                    String codigo = sc.nextLine();
+                    crud.eliminar(codigo);
+                }
+                case 5 -> {
+                    System.out.print("Código de barra: ");
+                    String codigo = sc.nextLine();
+                    crud.leerPorCodigo(codigo).ifPresentOrElse(
+                            System.out::println,
+                            () -> System.out.println("⚠️ No se encontró el producto.")
+                    );
+                }
+                case 0 -> System.out.println("👋 Saliendo...");
+                default -> System.out.println("❌ Opción no válida.");
+            }
+        } while (opcion != 0);
