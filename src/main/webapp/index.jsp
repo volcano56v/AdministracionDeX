@@ -48,7 +48,7 @@
 
 <div class="card">
     <h1>Bienvenido</h1>
-    <p>Seleccione cómo desea ingresar al sistema</p>
+    <p>Seleccione cómo desea ingresar al sistema o registrese</p>
 
     <form action="loginAdmin.jsp" method="get">
         <button type="submit" class="btn btn-light btn-custom">🔑 Iniciar como Administrador</button>

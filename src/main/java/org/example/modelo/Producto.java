@@ -1,5 +1,7 @@
 package org.example.modelo;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Clase Producto
  * Representa un producto dentro del inventario del sistema.
@@ -8,7 +10,7 @@ package org.example.modelo;
  * El campo 'codigoBarra' será el ID del documento en la colección "productos".
  */
 public class Producto {
-
+    //@Exclude
     private long codigoBarra;   // ID del documento en Firestore
     private String nombre;
     private int precio;

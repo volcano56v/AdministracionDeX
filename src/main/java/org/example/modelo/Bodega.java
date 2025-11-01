@@ -1,25 +1,33 @@
 package org.example.modelo;
 
 public class Bodega {
-    private final long codigo;
-    private final int capacidadMAxima;
+    private long codigo;
+    private int capacidadMaxima;
     private int capacidadActual;
 
-    public Bodega(long codigo, int capacidadMAxima) {
+    // 🔹 Constructor vacío necesario para Firestore
+    public Bodega() {}
+
+    public Bodega(long codigo, int capacidadMaxima) {
         this.codigo = codigo;
-        this.capacidadMAxima = capacidadMAxima;
+        this.capacidadMaxima = capacidadMaxima;
         this.capacidadActual = 0;
     }
 
-    public long getCodigo() {
-        return codigo;
-    }
+    public long getCodigo() { return codigo; }
+    public int getCapacidadMaxima() { return capacidadMaxima; }
+    public int getCapacidadActual() { return capacidadActual; }
 
-    public int getCapacidadMAxima() {
-        return capacidadMAxima;
-    }
+    public void setCodigo(long codigo) { this.codigo = codigo; }
+    public void setCapacidadMaxima(int capacidadMaxima) { this.capacidadMaxima = capacidadMaxima; }
+    public void setCapacidadActual(int capacidadActual) { this.capacidadActual = capacidadActual; }
 
-    public int getCapacidadActual() {
-        return capacidadActual;
+    @Override
+    public String toString() {
+        return "Bodega{" +
+                "codigo=" + codigo +
+                ", capacidadMaxima=" + capacidadMaxima +
+                ", capacidadActual=" + capacidadActual +
+                '}';
     }
 }
