@@ -11,6 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
+src/main/resources/proyectoenpractica.json
 
 ### Eclipse ###
 .apt_generated
@@ -36,4 +37,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-src/main/resources/proyectoenpractica.json

@@ -1,33 +1,52 @@
 package org.example.modelo;
 
 public class Bodega {
-    private long codigo;
-    private int capacidadMaxima;
-    private int capacidadActual;
+    private long id;
+    private String nombre;
+    private String direccion;
+    private int capacidad;
 
-    // 🔹 Constructor vacío necesario para Firestore
+    // 🔹 Constructor vacío (requerido por Firestore)
     public Bodega() {}
 
-    public Bodega(long codigo, int capacidadMaxima) {
-        this.codigo = codigo;
-        this.capacidadMaxima = capacidadMaxima;
-        this.capacidadActual = 0;
+    // 🔹 Constructor completo
+    public Bodega(long id, String nombre, String direccion, int capacidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.capacidad = capacidad;
     }
 
-    public long getCodigo() { return codigo; }
-    public int getCapacidadMaxima() { return capacidadMaxima; }
-    public int getCapacidadActual() { return capacidadActual; }
+    // 🔹 Getters y setters
+    public long getId() {
+        return id;
+    }
 
-    public void setCodigo(long codigo) { this.codigo = codigo; }
-    public void setCapacidadMaxima(int capacidadMaxima) { this.capacidadMaxima = capacidadMaxima; }
-    public void setCapacidadActual(int capacidadActual) { this.capacidadActual = capacidadActual; }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    @Override
-    public String toString() {
-        return "Bodega{" +
-                "codigo=" + codigo +
-                ", capacidadMaxima=" + capacidadMaxima +
-                ", capacidadActual=" + capacidadActual +
-                '}';
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 }

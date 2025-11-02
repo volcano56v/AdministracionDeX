@@ -29,12 +29,12 @@
             color: #2c3e50;
             font-weight: bold;
         }
-        table {
-            margin-top: 20px;
-        }
         th {
             background-color: #007bff;
             color: white;
+        }
+        .btn-group button {
+            margin: 3px;
         }
     </style>
 </head>
@@ -44,49 +44,56 @@
 
     <!-- ====================== FORMULARIO ====================== -->
     <div class="form-section">
-        <form action="ProductoServlet" method="post">
+        <form id="formProducto" action="ProductoServlet" method="post">
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="codigoBarra" class="form-label">Código de Barra</label>
-                    <input type="number" class="form-control" id="codigoBarra" name="codigoBarra" required>
+                    <input type="number" class="form-control" id="codigoBarra" name="codigoBarra" placeholder="Ej: 1001">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Galletas">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="categoria" class="form-label">Categoría</label>
-                    <input type="text" class="form-control" id="categoria" name="categoria" required>
+                    <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ej: Alimentos">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="precio" class="form-label">Precio</label>
-                    <input type="number" class="form-control" id="precio" name="precio" required>
+                    <input type="number" class="form-control" id="precio" name="precio" placeholder="Ej: 1200">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="cantidad" class="form-label">Cantidad</label>
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: 20">
                 </div>
             </div>
 
-            <div class="text-center">
+            <div class="text-center btn-group">
                 <button type="submit" name="accion" value="crear" class="btn btn-success">➕ Agregar</button>
                 <button type="submit" name="accion" value="actualizar" class="btn btn-primary">✏️ Actualizar</button>
                 <button type="submit" name="accion" value="eliminar" class="btn btn-danger">🗑️ Eliminar</button>
                 <button type="submit" name="accion" value="listar" class="btn btn-secondary">🔄 Listar</button>
             </div>
         </form>
+
+        <small class="text-muted d-block mt-2">
+            🔹 Agregar o actualizar requiere todos los campos.<br>
+            🔹 Eliminar requiere solo el <b>Código de Barra</b>.<br>
+            🔹 Listar no requiere llenar ningún campo.
+        </small>
     </div>
 
     <!-- ====================== LISTADO DE PRODUCTOS ====================== -->
     <%
         List<Producto> productos = (List<Producto>) request.getAttribute("productos");
-        if (productos != null && !productos.isEmpty()) {
     %>
-    <table class="table table-bordered table-striped text-center">
+
+    <% if (productos != null && !productos.isEmpty()) { %>
+    <table class="table table-bordered table-striped text-center align-middle">
         <thead>
         <tr>
             <th>Código Barra</th>
@@ -108,9 +115,32 @@
         <% } %>
         </tbody>
     </table>
+    <% } else if (productos != null) { %>
+    <p class="text-center text-muted">⚠️ No hay productos registrados en la base de datos.</p>
     <% } else { %>
-    <p class="text-center text-muted">No hay productos registrados.</p>
+    <p class="text-center text-muted">👋 Usa los botones de arriba para comenzar.</p>
     <% } %>
 </div>
+
+<!-- ====================== SCRIPT ====================== -->
+<script>
+    const form = document.getElementById("formProducto");
+    const campos = ["codigoBarra", "nombre", "categoria", "precio", "cantidad"];
+
+    document.querySelectorAll("button[name='accion']").forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Quitar todos los 'required'
+            campos.forEach(c => document.getElementById(c).removeAttribute("required"));
+
+            if (btn.value === "crear" || btn.value === "actualizar") {
+                // Requiere todos los campos
+                campos.forEach(c => document.getElementById(c).setAttribute("required", "required"));
+            } else if (btn.value === "eliminar") {
+                // Solo requiere código de barra
+                document.getElementById("codigoBarra").setAttribute("required", "required");
+            }
+        });
+    });
+</script>
 </body>
 </html>

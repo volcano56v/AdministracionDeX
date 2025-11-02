@@ -1,54 +1,29 @@
 package org.example.logica;
 
 import org.example.modelo.Bodega;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
-/**
- * 🏗️ Lógica de negocio para la entidad Bodega
- * Maneja las operaciones CRUD de las bodegas en Firestore.
- */
 public class LogicaBodega {
+    private final CRUDFireStore<Bodega> crud = new CRUDFireStore<>("bodegas", Bodega.class);
 
-    private final CRUDFireStore<Bodega> crudBodega;
-
-    public LogicaBodega() {
-        // Conecta con la colección "bodegas" en Firestore
-        crudBodega = new CRUDFireStore<>("bodegas", Bodega.class);
+    public void crearBodega(Bodega b) {
+        crud.guardar(String.valueOf(b.getId()), b);
     }
 
-    /**
-     * 🟢 Registrar una nueva bodega
-     */
-    public void registrarBodega(long codigo, int capacidadMaxima, int capacidadActual) {
-   //     Bodega bodega = new Bodega(codigo, capacidadMaxima, capacidadActual);
-   //     crudBodega.guardar(String.valueOf(codigo), bodega);
+    public Bodega obtenerBodega(long id) {
+        return crud.obtenerPorId(String.valueOf(id));
     }
 
-    /**
-     * 🟡 Obtener una bodega por su código
-     */
-    public Bodega obtenerBodega(long codigo) {
-        return crudBodega.obtenerPorId(String.valueOf(codigo));
-    }
-
-    /**
-     * 🔵 Listar todas las bodegas
-     */
     public List<Bodega> listarBodegas() {
-        return crudBodega.obtenerTodos();
+        return crud.obtenerTodos();
     }
 
-    /**
-     * 🟠 Actualizar una bodega
-     */
-    public void actualizarBodega(long codigo, Map<String, Object> nuevosDatos) {
-        crudBodega.actualizarCampos(String.valueOf(codigo), nuevosDatos);
+    public void actualizarCapacidad(long id, int nuevaCapacidad) {
+        crud.actualizarCampos(String.valueOf(id), Map.of("capacidad", nuevaCapacidad));
     }
 
-    /**
-     * 🔴 Eliminar una bodega
-     */
-    public void eliminarBodega(long codigo) {
-        crudBodega.eliminar(String.valueOf(codigo));
+    public void eliminarBodega(long id) {
+        crud.eliminar(String.valueOf(id));
     }
 }
