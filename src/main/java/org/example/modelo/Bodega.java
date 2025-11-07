@@ -17,36 +17,12 @@ public class Bodega {
         this.capacidad = capacidad;
     }
 
-    // 🔹 Getters y setters
-    public long getId() {
-        return id;
-    }
+    // 🔹 Getters
+    public long getId() {return id;}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public String getNombre() {return nombre;}
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getDireccion() {return direccion;}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public int getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
+    public int getCapacidad() {return capacidad;}
 }
