@@ -15,7 +15,7 @@ public class ConexionFirebase {
 
     public static void conectar() throws IOException {
         if (FirebaseApp.getApps().isEmpty()) {
-            String path = System.getProperty("user.dir") + "/proyectoenpractica.json";
+            String path = System.getProperty("user.dir") + "/src/main/resources/proyectoenpractica.json";
             FileInputStream serviceAccount = new FileInputStream(path);
 
             FirebaseOptions options = new FirebaseOptions.Builder()
